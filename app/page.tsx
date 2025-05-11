@@ -1,9 +1,14 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
 import AcmeLogo from "@/app/ui/acme-logo";
 import { lusitanaFont } from "@/app/ui/fonts";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 export default function Page() {
   return (

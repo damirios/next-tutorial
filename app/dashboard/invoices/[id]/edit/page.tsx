@@ -1,6 +1,13 @@
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+
 import Form from "@/app/ui/invoices/edit-form";
 import { fetchCustomers, fetchInvoiceById } from "@/app/lib/data";
 import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
+
+export const metadata: Metadata = {
+  title: "Edit Invoice",
+};
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -12,6 +19,10 @@ export default async function Page({ params }: Props) {
     fetchInvoiceById(id),
     fetchCustomers(),
   ]);
+
+  if (!invoice) {
+    notFound();
+  }
 
   return (
     <main>
